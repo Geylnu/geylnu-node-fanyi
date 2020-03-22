@@ -1,0 +1,30 @@
+{
+  "name": "fanyi",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/fs-extra": "^8.1.0",
+    "@types/node": "^13.9.2",
+    "babel-jest": "^25.1.0",
+    "commander": "^5.0.0",
+    "fs-extra": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "@types/mock-fs": "^4.10.0",
+    "jest": "^25.1.0",
+    "mock-fs": "^4.11.0",
+    "ts-node": "^8.7.0",
+    "typescript": "^3.8.3"
+  }
+}
