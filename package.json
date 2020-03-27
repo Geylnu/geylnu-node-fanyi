@@ -13,11 +13,14 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-typescript": "^7.9.0",
+    "@types/axios": "^0.14.0",
     "@types/fs-extra": "^8.1.0",
     "@types/node": "^13.9.2",
     "babel-jest": "^25.1.0",
     "commander": "^5.0.0",
-    "fs-extra": "^9.0.0"
+    "fs-extra": "^9.0.0",
+    "google-translate-open-api": "^1.3.2",
+    "youdao-fanyi": "^2.0.0"
   },
   "devDependencies": {
     "@types/jest": "^25.1.4",
