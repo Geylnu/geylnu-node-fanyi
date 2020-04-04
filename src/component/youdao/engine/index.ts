@@ -1,4 +1,3 @@
-///<reference path='../../../../types/youdao-fanyi/index.d.ts' />
 import Youdao from "youdao-fanyi"
 import {lang, TranslateContent} from "../../common/interface";
 import {AxiosResponse} from "axios";
