@@ -13,14 +13,8 @@ export interface fanyiCallback {
 }
 
 export interface fanyi {
-    (text: string, callback?: fanyiCallback): Promise<any>
-}
-
-export interface fanyi {
-    (text: string, query: YouDaoQuery, callback?: fanyiCallback): Promise<any>
-}
-
-export interface fanyi {
+    (text: string, callback?: fanyiCallback): Promise<any>,
+    (text: string, query: YouDaoQuery, callback?: fanyiCallback): Promise<any>,
     fanyi: fanyi
 }
 
