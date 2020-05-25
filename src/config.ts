@@ -5,10 +5,11 @@ import * as path from "path"
 const pathName = "/.geylnu-fanyi/"
 const homeDir: string = process.env.HOME || os.homedir()
 const homePath = path.join(homeDir,pathName)
+let configCache: translateConfig | null = null
 
 interface translateConfig {
-    engineConfig: {
-        youdao: {
+    engineConfig?: {
+        youdao?: {
             key: string,
             secret: string
         }
@@ -16,11 +17,15 @@ interface translateConfig {
 }
 
 
-const read = async (spePath?: string | Buffer | number): Promise<translateConfig>=>{
+const readAndCache = async (spePath?: string | Buffer | number): Promise<translateConfig | null>=>{
+    if (configCache !== null){
+        return configCache
+    }
+
     const configPath = spePath  || path.join(homePath,"config.json")
     await fse.ensureDir(homePath)
     const configFile = await fse.readFile(configPath, { flag: "a+", encoding: "utf-8"})
-    return configFile ?　JSON.parse(configFile) : null
+    return configFile ? JSON.parse(configFile) as translateConfig : {}
 }
 
 const write = async (config: translateConfig)=>{
@@ -31,7 +36,7 @@ const write = async (config: translateConfig)=>{
 }
 
 export {
-    read,
+    readAndCache,
     write,
     homePath,
     translateConfig

@@ -1,17 +1,29 @@
-import Youdao from "youdao-fanyi"
-import {lang, TranslateContent} from "../../common/interface";
-import {AxiosResponse} from "axios";
+import Youdao, {youdaoApiResponse} from "youdao-fanyi"
+import {TranslateContent} from "../../common/interface";
+import * as config from  "../../../config"
 
-const fanyi = Youdao({appkey: "***REMOVED***",secret: "***REMOVED***"})
+export interface youdaoTranslateContent  extends  TranslateContent{
+    raw: youdaoApiResponse
+}
 
 const translate = async (text: string) =>{
-    const result = await fanyi(text)
-    const translateContent: TranslateContent = {
-        text: result.translation as string,
-        lang:　result.dict as lang,
-        raw: result as AxiosResponse
+    const currentConfig = await config.readAndCache()
+    const {key, secret} = currentConfig?.engineConfig?.youdao || {}
+    if (key && secret){
+        const fanyi = Youdao({appkey: key,secret: secret})
+        const result = await fanyi(text)
+        if (result?.errorCode === "0"){
+            const translateContent: youdaoTranslateContent  = {
+                text: result.translation.join(""),
+                raw: result
+            }
+            return translateContent
+        }else{
+            throw Error(`Youdao can't get data, errCode = ${result?.errorCode}`)
+        }
+    }else{
+        throw Error("有道翻译key及secret不存在")
     }
-    return translateContent
 }
 
 export default translate

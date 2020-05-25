@@ -3,6 +3,24 @@ export interface YouDaoOptions {
     secret: string,
 }
 
+export interface youdaoApiResponse {
+    errorCode: string,
+    query: string,
+    translation: [string],
+    basic?:{
+        "us-phonetic": string,
+        "phonetic": string,
+        "uk-phonetic": string,
+        "uk-speech": string,
+        "us-speech": string,
+        "explains": string,
+    },
+    web?: [{value: [string], key: string}]
+    l: string,
+    tSpeakUrl: string,
+    returnPhrase: [string]
+}
+
 export interface YouDaoQuery {
     to: string,
     from: string,
@@ -13,8 +31,8 @@ export interface fanyiCallback {
 }
 
 export interface fanyi {
-    (text: string, callback?: fanyiCallback): Promise<any>,
-    (text: string, query: YouDaoQuery, callback?: fanyiCallback): Promise<any>,
+    (text: string, callback?: fanyiCallback): Promise<youdaoApiResponse>,
+    (text: string, query: YouDaoQuery, callback?: fanyiCallback): Promise<youdaoApiResponse>,
     fanyi: this
 }
 
