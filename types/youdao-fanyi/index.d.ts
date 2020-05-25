@@ -15,7 +15,7 @@ export interface fanyiCallback {
 export interface fanyi {
     (text: string, callback?: fanyiCallback): Promise<any>,
     (text: string, query: YouDaoQuery, callback?: fanyiCallback): Promise<any>,
-    fanyi: fanyi
+    fanyi: this
 }
 
 declare function Youdao(options: YouDaoOptions): fanyi
