@@ -13,12 +13,14 @@ export interface youdaoApiResponse {
         "uk-phonetic": string,
         "uk-speech": string,
         "us-speech": string,
-        "explains": string,
+        "explains": [string],
+        "wfs": [{wf: {name: string,value: string}}]
     },
     web?: [{value: [string], key: string}]
     l: string,
     tSpeakUrl: string,
-    returnPhrase: [string]
+    returnPhrase: [string],
+    isWord: boolean
 }
 
 export interface YouDaoQuery {
@@ -37,6 +39,6 @@ export interface fanyi {
 }
 
 declare function Youdao(options: YouDaoOptions): fanyi
-declare function Youdao(text: string): Promise<any>
+declare function Youdao(text: string): Promise<youdaoApiResponse>
 
 export default Youdao
