@@ -1,24 +1,24 @@
 {
-  "name": "fanyi",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest"
+  "name": "geylnu-fanyi",
+  "version": "0.1.5",
+  "description": "一个支持多种翻译引擎，可配置的命令行翻译工具",
+  "bin": {
+    "gfy": "/dist/cli.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "main": "/dist/cli.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "keywords": [
+    "translate"
+  ],
+  "files": [
+    "/dist/"
+  ],
+  "author": "geylnu",
+  "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
-    "@babel/preset-typescript": "^7.9.0",
-    "@types/axios": "^0.14.0",
-    "@types/chalk": "^2.2.0",
-    "@types/fs-extra": "^8.1.0",
-    "@types/inquirer": "^6.5.0",
-    "@types/node": "^13.9.2",
-    "babel-jest": "^25.1.0",
     "chalk": "^3.0.0",
     "commander": "^5.0.0",
     "fs-extra": "^9.0.0",
@@ -29,6 +29,15 @@
     "youdao-fanyi": "^2.0.0"
   },
   "devDependencies": {
+    "babel-jest": "^25.1.0",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/axios": "^0.14.0",
+    "@types/chalk": "^2.2.0",
+    "@types/fs-extra": "^8.1.0",
+    "@types/inquirer": "^6.5.0",
+    "@types/node": "^13.9.2",
     "@types/jest": "^25.1.4",
     "@types/mock-fs": "^4.10.0",
     "jest": "^25.1.0",

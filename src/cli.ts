@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import {Command} from "commander"
 import * as config from "./config"
 import youdao from "./component/youdao"
@@ -5,11 +7,9 @@ import ora  from "ora"
 import inquirer from "inquirer"
 
 
-import * as pkg from '../package.json'
 
 const spinner = ora('')
 
-const {version} = pkg
 
 const program = new Command()
 
@@ -62,9 +62,7 @@ const start = async () => {
      await config.readAndCache();
 }
 
-program
-    .version(version)
-    .arguments('<word> [words...]').action(translateHandler)
+program.arguments('<word> [words...]').action(translateHandler)
 
 program
     .command('config').action(configHandler)
