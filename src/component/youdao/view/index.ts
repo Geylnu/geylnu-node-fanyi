@@ -1,5 +1,6 @@
 import chalk from "chalk"
 import {youdaoTranslateContent} from "../engine"
+import say from  "say"
 
 const log = console.log
 
@@ -40,7 +41,7 @@ const generateWebExplain = (explains: [{ value: [string], key: string }], query:
 
 const showView = (translateContent: youdaoTranslateContent)=>{
     const { raw: result} = translateContent
-
+    say.speak(result.query)
     /* 音标*/
     const ukPhonetic = result.basic?.["uk-phonetic"]
     const usPhonetic = result.basic?.["us-phonetic"]
