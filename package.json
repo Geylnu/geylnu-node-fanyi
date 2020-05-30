@@ -16,6 +16,9 @@
   "files": [
     "/dist/"
   ],
+  "repository": {
+    "url": "https://github.com/Geylnu/geylnu-node-fanyi"
+  },
   "author": "geylnu",
   "license": "MIT",
   "dependencies": {
