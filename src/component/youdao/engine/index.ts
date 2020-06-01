@@ -1,16 +1,16 @@
-import Youdao, {youdaoApiResponse} from "youdao-fanyi"
+import Youdao from "youdao-fanyi"
 import {TranslateContent} from "../../common/interface";
 import * as config from  "../../../config"
 
 export interface youdaoTranslateContent  extends  TranslateContent{
-    raw: youdaoApiResponse
+    raw: Youdao.apiResponse
 }
 
-const translate = async (text: string) =>{
+const translate = async (text: string, extraOptions?: Youdao.opnions) =>{
     const currentConfig = await config.readAndCache()
     const {key, secret} = currentConfig?.engineConfig?.youdao || {}
     if (key && secret){
-        const fanyi = Youdao({appkey: key,secret: secret})
+        const fanyi = Youdao({appkey: key,secret: secret, ...extraOptions})
         const result = await fanyi(text)
         if (result?.errorCode === "0"){
             const translateContent: youdaoTranslateContent  = {

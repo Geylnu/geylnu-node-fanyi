@@ -7,11 +7,11 @@ const homeDir: string = process.env.HOME || os.homedir()
 const homePath = path.join(homeDir,pathName)
 let configCache: translateConfig | null = null
 
-interface translateConfig {
-    engineConfig?: {
-        youdao?: {
-            key: string,
-            secret: string
+interface translateConfig extends Readonly<Object>{
+     engineConfig?: {
+        readonly youdao?: {
+            readonly key: string,
+            readonly secret: string
         }
     }
 }
