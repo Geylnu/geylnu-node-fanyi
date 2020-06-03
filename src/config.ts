@@ -17,8 +17,8 @@ interface translateConfig extends Readonly<Object>{
 }
 
 
-const readAndCache = async (spePath?: string | Buffer | number): Promise<translateConfig | null>=>{
-    if (configCache !== null){
+const readAndCache = async (spePath?: string | Buffer | number, refreshFlag?: boolean): Promise<translateConfig | null>=>{
+    if (configCache !== null && refreshFlag ){
         return configCache
     }
 
@@ -29,7 +29,7 @@ const readAndCache = async (spePath?: string | Buffer | number): Promise<transla
 }
 
 const write = async (config: translateConfig)=>{
-
+    configCache = config
     const configPath = path.join(homePath,"config.json")
     const configString = JSON.stringify(config)
     return fse.writeFile(configPath, configString, {encoding: "utf-8"})

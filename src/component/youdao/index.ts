@@ -1,6 +1,7 @@
 import engine from "./engine"
 import view from "./view"
 import Youdao from "youdao-fanyi";
+import {GError} from "../common/Error";
 
 const adapter = async (text: string) =>{
  const translateContent = await engine(text)
@@ -8,14 +9,16 @@ const adapter = async (text: string) =>{
 }
 
 adapter.test = async (options: Youdao.opnions) =>{
-        const result = await engine("test", options)
-        if (result){
-            if (result.raw.errorCode === "0" ){
-                return result
-            }
-        }else {
-            throw Error("unexpected Error")
+    try {
+        await engine("test", options)
+        return null
+    } catch (e) {
+        if (e instanceof  GError){
+            return e
+        }else{
+            throw e
         }
+    }
 }
 
 export  default  adapter

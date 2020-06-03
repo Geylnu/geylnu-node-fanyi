@@ -10,7 +10,7 @@ declare namespace Youdao{
         secret: string,
     }
     interface apiResponse {
-        errorCode: string,
+        errorCode: apiErrorCodes,
         query: string,
         translation: [string],
         basic?:{
@@ -37,6 +37,16 @@ declare namespace Youdao{
     interface fanyiCallback {
         (error: Error, response: {}): void
     }
+
+    interface apiErrorCodesMap {
+        "SUCCESS": "0"
+        "TEXT_TO0_LONG": "103",
+        "INVALID_APPLICATION_ID": "108",
+        "NO_VALID_EXAMPLES_OF_RELATED_SERVICES": "110",
+        "SIGNATURE_VERIFICATION_FAILED": "202",
+    }
+
+    type apiErrorCodes = apiErrorCodesMap[keyof apiErrorCodesMap]
 }
 
 declare function Youdao(options: Youdao.opnions): Youdao.fanyi
